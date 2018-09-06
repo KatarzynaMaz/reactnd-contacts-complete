@@ -1,4 +1,6 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
+//import PropTypes from 'prop-types';
+
 
 import ListContacts from './ListContacts'
 
@@ -38,10 +40,12 @@ class App extends Component {
     console.log('Props', 'this.props');
     return (
       <div>
-        <ListContacts onDeleteContact={this.removeContact}   contacts={this.state.contacts}/>
+         <ListContacts onDeleteContact={this.removeContact} 
+                       contacts={this.state.contacts}/>
       </div>
     )
   }
 }
+
 
 export default App;
