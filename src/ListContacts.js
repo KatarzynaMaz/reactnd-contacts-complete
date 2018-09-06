@@ -15,7 +15,7 @@ import React, { Component } from 'react'
             <p>{contact.name}</p>
             <p>{contact.details}</p>
         </div>
-        <button className='contact-remove'>
+        <button onClick={() => this.props.onDeleteContact(contact)} className='contact-remove'>
         remove
         </button>
 
