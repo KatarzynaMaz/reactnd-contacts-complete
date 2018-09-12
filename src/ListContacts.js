@@ -2,9 +2,32 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types';
 
  class ListContacts extends Component {
-  render() {
+   static PropTypes = {
+      contacts: PropTypes.array.isRequired ,
+      onDeleteContacts: PropTypes.func.isRequired
+    }
+    
+      state = {
+        query: ''
+      }
+
+      updateQuery = (query) => {
+        this.setState({query: query.trim()})
+
+      }
+    render() {
     
     return (
+      <div className = 'list-contacts'>
+      {JSON.stringify(this.state)}
+      <div className = 'list-contacts-top'>
+        <input className = 'search-contacts'
+        type = 'text'
+        placeholder = 'Search Contact'
+        value = {this.state.query}
+        onChange ={(event)=>this.updateQuery(event.target.value)}
+        />
+      </div>
       <ol className='contact-list'>
         {this.props.contacts.map((contact) => (
 
@@ -20,15 +43,18 @@ import PropTypes from 'prop-types';
         remove
         </button>
 
-              </li>
+      </li>
       ))}
        </ol>
+      
+      </div>
+      
     )
   }
 }
 
-ListContacts.PropTypes = {
-  contacts: PropTypes.array.isRequired ,
-  onDeleteContacts: PropTypes.func.isRequired
-}
+//ListContacts.PropTypes = {
+  //contacts: PropTypes.array.isRequired ,
+ // onDeleteContacts: PropTypes.func.isRequired
+//}
  export default ListContacts
